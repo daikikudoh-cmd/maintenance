@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,8 +48,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'name_kana' => 'required|string|max:100',
             'email' => 'required|string|email|max:255|unique:users',
+            'tell' => 'required|string|max:30',
+            'address' => 'required|string|max:100',
+            'car_number' => 'required|string|max:4',
+            'car_type' => 'required|string|max:50',
+            'parking_information' => 'required|string|max:255',
+            'loaner_car' => 'required|integer|max:5',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -64,7 +71,14 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'name_kana' => $data['name_kana'],
             'email' => $data['email'],
+            'tell' => $data['tell'],
+            'address' => $data['address'],
+            'car_number' => $data['car_number'],
+            'car_type' => $data['car_type'],
+            'parking_information' => $data['parking_information'],
+            'loaner_car' => $data['loaner_car'],
             'password' => bcrypt($data['password']),
         ]);
     }
