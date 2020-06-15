@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'car_type' => 'required|string|max:50',
             'parking_information' => 'required|string|max:255',
             'loaner_car' => 'required|integer|max:5',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:4|confirmed',
         ]);
     }
 
